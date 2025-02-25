@@ -37,7 +37,7 @@
             MainPanel = new Panel();
             button2 = new Button();
             TaskGrid = new DataGridView();
-            Task = new DataGridViewTextBoxColumn();
+            Tasks = new DataGridViewTextBoxColumn();
             Status = new DataGridViewCheckBoxColumn();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TaskGrid).BeginInit();
@@ -100,7 +100,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             TaskGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             TaskGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            TaskGrid.Columns.AddRange(new DataGridViewColumn[] { Task, Status });
+            TaskGrid.Columns.AddRange(new DataGridViewColumn[] { Tasks, Status });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.FromArgb(37, 37, 38);
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -128,16 +128,16 @@
             TaskGrid.TabIndex = 5;
             TaskGrid.CellContentClick += CheckBoxClick;
             // 
-            // Task
+            // Tasks
             // 
-            Task.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Tasks.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            Task.DefaultCellStyle = dataGridViewCellStyle2;
-            Task.HeaderText = "Task";
-            Task.MinimumWidth = 1230;
-            Task.Name = "Task";
-            Task.Resizable = DataGridViewTriState.True;
-            Task.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Tasks.DefaultCellStyle = dataGridViewCellStyle2;
+            Tasks.HeaderText = "Tasks";
+            Tasks.MinimumWidth = 1230;
+            Tasks.Name = "Tasks";
+            Tasks.Resizable = DataGridViewTriState.True;
+            Tasks.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Status
             // 
@@ -175,8 +175,8 @@
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn sssq;
         private DataGridView TaskGrid;
-        private DataGridViewTextBoxColumn Task;
-        private DataGridViewCheckBoxColumn Status;
         private Button button2;
+        private DataGridViewTextBoxColumn Tasks;
+        private DataGridViewCheckBoxColumn Status;
     }
 }

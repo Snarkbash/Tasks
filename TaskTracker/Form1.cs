@@ -1,13 +1,7 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Reflection;
-using System.Text;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Text.Json.Nodes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Microsoft.Win32;
+
 
 namespace TaskTracker
 {
@@ -15,8 +9,7 @@ namespace TaskTracker
     {
         private List<Dictionary<string, object>> TasksList = new();
         private TaskManager taskManager = new();
-        private const string InProgress = "IN PROGRESS";
-        private const string Complete = "COMPLETE";
+        private bool isProcessing = false;
 
         public Color green = Color.FromArgb(80, 161, 79);
         public Color red = Color.FromArgb(180, 60, 60);
@@ -33,7 +26,7 @@ namespace TaskTracker
             LoadTasks();
 
 
-            TaskGrid.Columns["Task"].Width = 200;
+            TaskGrid.Columns["Tasks"].Width = 200;
 
             // Then allow it to auto-size based on content
 
@@ -46,7 +39,7 @@ namespace TaskTracker
             TaskGrid.AllowUserToDeleteRows = false;
         }
 
-        private void LoadTasks()
+        private async void LoadTasks()
         {
             TasksList = taskManager.LoadTasks();
 
@@ -56,27 +49,18 @@ namespace TaskTracker
 
             for (int i = 0; i < TasksList.Count; i++)
             {
-                string taskString = TasksList[i]["Task"].ToString();
+                string taskString = TasksList[i]["Tasks"].ToString();
 
                 bool completed = ((JsonElement)TasksList[i]["Completed"]).GetBoolean();
 
                 taskManager.InitTableData(taskString, completed, TaskGrid, this, i);
+                TaskGrid.Rows[i].Cells["Status"].Style.BackColor = completed ? green : red;
+                TaskGrid.Rows[i].Cells["Status"].Value = completed ? true : false;
+                TasksList[i]["Completed"] = completed;
 
-                if (completed)
-                {
-                    TaskGrid.Rows[i].Cells["Status"].Style.BackColor = green;
-                    TasksList[i]["Completed"] = JsonDocument.Parse("false").RootElement;
-                    TaskGrid.Rows[i].Cells["Status"].Value = true;
-                }
-                else
-                {
-                    TaskGrid.Rows[i].Cells["Status"].Style.BackColor = red;
-                    TasksList[i]["Completed"] = JsonDocument.Parse("true").RootElement;
-                    TaskGrid.Rows[i].Cells["Status"].Value = false;
-                }
+
+                ResumeLayout(true);
             }
-
-            ResumeLayout(true);
         }
         public void UpdateTask(string task)
         {
@@ -84,7 +68,7 @@ namespace TaskTracker
 
             TasksList.Add(new Dictionary<string, object>
             {
-                {"Task", task},
+                {"Tasks", task},
                 {"Completed", false}
             });
 
@@ -100,27 +84,27 @@ namespace TaskTracker
             taskTextBox.ShowDialog();
         }
 
-        public void CheckBoxClick(object sender, DataGridViewCellEventArgs e)
+        public async void CheckBoxClick(object sender, DataGridViewCellEventArgs e)
         {
+            TaskGrid.Enabled = false;
             if (e.RowIndex >= 0 && e.ColumnIndex == TaskGrid.Columns["Status"].Index)
             {
+                
+                TaskGrid.EndEdit();
+
                 DataGridViewCell cell = TaskGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                bool isComplete = Convert.ToBoolean(TasksList[e.RowIndex]["Completed"]);
 
-                bool isComplete = Convert.ToBoolean(cell.Value);
+                cell.Style.BackColor = isComplete ? red : green;
+                TasksList[e.RowIndex]["Completed"] = isComplete ? false : true;
 
-                if (isComplete)
-                {
-                    cell.Style.BackColor = red;
-                    TasksList[e.RowIndex]["Completed"] = false;
-                }
-                else
-                {
-                    cell.Style.BackColor = green;
-                    TasksList[e.RowIndex]["Completed"] = true;
-                }
                 taskManager.SaveTasks(TasksList);
+                await Task.Delay(500);
             }
+            TaskGrid.Enabled = true;
         }
+
+
 
         private void Clear_Click(object sender, EventArgs e)
         {
@@ -128,9 +112,7 @@ namespace TaskTracker
             TaskGrid.Controls.Clear();
             TaskGrid.RowCount = 0;
             TaskGrid.ResumeLayout();
-
             TasksList.Clear();
-
             taskManager.SaveTasks(TasksList);
 
         }

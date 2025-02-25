@@ -7,8 +7,12 @@
       "RelativeMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|solutionrelative:tasktracker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|c:\\users\\green\\documents\\code\\tasks\\tasktracker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|C:\\Users\\green\\Documents\\Code\\Tasks\\tasktracker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|solutionrelative:tasktracker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|c:\\users\\green\\documents\\code\\tasks\\tasktracker\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA9DEEDD-9F25-4C69-86EF-926FA66186E8}|TaskTracker\\TaskTracker.csproj|solutionrelative:tasktracker\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaskManager.cs",
+              "DocumentMoniker": "C:\\Users\\green\\Documents\\Code\\Tasks\\TaskTracker\\TaskManager.cs",
+              "RelativeDocumentMoniker": "TaskTracker\\TaskManager.cs",
+              "ToolTip": "C:\\Users\\green\\Documents\\Code\\Tasks\\TaskTracker\\TaskManager.cs",
+              "RelativeToolTip": "TaskTracker\\TaskManager.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-24T23:15:38.014Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -28,7 +45,7 @@
               "RelativeDocumentMoniker": "TaskTracker\\Form1.cs",
               "ToolTip": "C:\\Users\\green\\Documents\\Code\\Tasks\\TaskTracker\\Form1.cs",
               "RelativeToolTip": "TaskTracker\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAArwDMAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T22:29:40.845Z",
               "EditorCaption": ""
